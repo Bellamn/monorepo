@@ -1,0 +1,28 @@
+{
+  "root": "apps/ling3-d-e2e",
+  "sourceRoot": "apps/ling3-d-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/ling3-d-e2e/cypress.json",
+        "devServerTarget": "ling3-d:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "ling3-d:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/ling3-d-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["ling3-d"]
+}

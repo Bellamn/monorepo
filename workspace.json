@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "ling3-d": "apps/ling3-d",
+    "ling3-d-e2e": "apps/ling3-d-e2e"
+  }
+}

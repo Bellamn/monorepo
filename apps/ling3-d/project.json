@@ -1,0 +1,80 @@
+{
+  "root": "apps/ling3-d",
+  "sourceRoot": "apps/ling3-d/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/ling3-d",
+        "index": "apps/ling3-d/src/index.html",
+        "baseHref": "/",
+        "main": "apps/ling3-d/src/main.tsx",
+        "polyfills": "apps/ling3-d/src/polyfills.ts",
+        "tsConfig": "apps/ling3-d/tsconfig.app.json",
+        "assets": ["apps/ling3-d/src/favicon.ico", "apps/ling3-d/src/assets"],
+        "styles": ["apps/ling3-d/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/ling3-d/src/environments/environment.ts",
+              "with": "apps/ling3-d/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "ling3-d:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "ling3-d:build:development"
+        },
+        "production": {
+          "buildTarget": "ling3-d:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/ling3-d/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/ling3-d"],
+      "options": {
+        "jestConfig": "apps/ling3-d/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
